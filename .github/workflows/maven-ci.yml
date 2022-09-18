@@ -19,7 +19,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    name: deploy-techdocs
+    name: Maven CI
     continue-on-error: false
     env:
       # JFrog platform url (for example: https://acme.jfrog.io)
