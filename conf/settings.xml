@@ -11,6 +11,11 @@
             <password>${SERVER_MAVEN_REPO_PASSWORD}</password>
         </server>
         <server>
+            <id>central</id>
+            <username>${SERVER_MAVEN_REPO_USER}</username>
+            <password>${SERVER_MAVEN_REPO_PASSWORD}</password>
+        </server>
+        <server>
             <id>website</id>
             <username>${SERVER_WEBSITE_USER}</username>
             <password>${SERVER_WEBSITE_PASSWORD}</password>
@@ -65,9 +70,9 @@
                 <repository>
                     <id>releases</id>
                     <url>${ARTIFACTORY_REPO_URL}</url>
-                    <releases>
+                    <snapshots>
                         <enabled>false</enabled>
-                    </releases>
+                    </snapshots>
                 </repository>
                 <repository>
                     <id>snapshots</id>
@@ -80,6 +85,13 @@
             <pluginRepositories>
                 <pluginRepository>
                     <id>central</id>
+                    <url>${ARTIFACTORY_REPO_URL}</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>releases</id>
                     <url>${ARTIFACTORY_REPO_URL}</url>
                     <snapshots>
                         <enabled>false</enabled>
