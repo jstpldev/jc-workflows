@@ -42,13 +42,18 @@ jobs:
       ARTIFACTORY_REPO_URL: ${{ secrets.ARTIFACTORY_REPO_URL }}
       SERVER_SCM_ID: ${{ secrets.SERVER_SCM_ID }}
     steps:
-    - name: Checkout current
+    - name: Checkout build repo
       uses: actions/checkout@v3
       
-    - name: Checkout common workflows
+    - name: Extract owner
+      shell: bash
+      run: echo "##[set-output name=owner;]$(echo ${GITHUB_REPOSITORY#*/})"
+      id: owner
+      
+    - name: Checkout common workflows repo
       uses: actions/checkout@v3
       with:
-        repository: jstpldev/jc-workflows
+        repository: ${{ steps.owner.outputs.value }}/jc-workflows
         ref: main
         path: jc-workflows
         
