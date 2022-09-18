@@ -63,6 +63,13 @@
                     </snapshots>
                 </repository>
                 <repository>
+                    <id>releases</id>
+                    <url>${ARTIFACTORY_REPO_URL}</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                </repository>
+                <repository>
                     <id>snapshots</id>
                     <url>${ARTIFACTORY_REPO_URL}</url>
                     <releases>
