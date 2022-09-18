@@ -47,7 +47,7 @@ jobs:
       
     - name: Extract owner
       shell: bash
-      run: echo "##[set-output name=owner;]$(echo ${GITHUB_REPOSITORY#*/})"
+      run: echo "##[set-output name=owner;]$(echo 'jstpldev')"
       id: extract_owner
       
     - name: Checkout common workflows repo
