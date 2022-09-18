@@ -3,34 +3,44 @@
 
 name: Maven CI
 
-on: [workflow_dispatch]
-
-env:
-  # JFrog platform url (for example: https://acme.jfrog.io)
-  JF_URL: "http://${{ secrets.SCM_MAVEN_IP }}"
-  # Basic authentication credentials
-  JF_USER: ${{ secrets.SCM_MAVEN_USER }}
-  JF_PASSWORD: ${{ secrets.SCM_MAVEN_PW }}
-  SERVER_WEBSITE_USER: ${{ secrets.SERVER_WEBSITE_USER }}
-  SERVER_WEBSITE_PASSWORD: ${{ secrets.SERVER_WEBSITE_PASSWORD }}
-  SERVER_MAVEN_REPO_USER: ${{ secrets.SERVER_MAVEN_REPO_USER }}
-  SERVER_MAVEN_REPO_PASSWORD: ${{ secrets.SERVER_MAVEN_REPO_PASSWORD }}
-  SERVER_SONATYPE_NEXUS_SNAPSHOTS_USER: ${{ secrets.SERVER_SONATYPE_NEXUS_SNAPSHOTS_USER }}
-  SERVER_SONATYPE_NEXUS_SNAPSHOTS_PASSWORD: ${{ secrets.SERVER_SONATYPE_NEXUS_SNAPSHOTS_PASSWORD }}
-  SERVER_SONATYPE_NEXUS_STAGING_USER: ${{ secrets.SERVER_SONATYPE_NEXUS_STAGING_USER }}
-  SERVER_SONATYPE_NEXUS_STAGING_PASSWORD: ${{ secrets.SERVER_SONATYPE_NEXUS_STAGING_PASSWORD }}
-  SERVER_SCM_USER: ${{ secrets.SERVER_SCM_USER }}
-  SERVER_SCM_PASSWORD: ${{ secrets.SERVER_SCM_PASSWORD }}
-  SERVER_BUILD_REPO_USER: ${{ secrets.SERVER_BUILD_REPO_USER }}
-  SERVER_BUILD_REPO_PASSWORD: ${{ secrets.SERVER_BUILD_REPO_PASSWORD }}
-  ARTIFACTORY_REPO_URL: ${{ secrets.ARTIFACTORY_REPO_URL }}
-  SERVER_SCM_ID: ${{ secrets.SERVER_SCM_ID }}
-
+on:  
+  workflow_call:
+    secrets:
+        SCM_MAVEN_IP:
+          required: true
+        SCM_MAVEN_USER:
+          required: true
+        SCM_MAVEN_PW:
+          required: true
+          
 jobs:
-  build:
-
+  maven-ci:
     runs-on: ubuntu-latest
-
+    permissions:
+      id-token: write
+      contents: read
+    name: deploy-techdocs
+    continue-on-error: false
+    env:
+      # JFrog platform url (for example: https://acme.jfrog.io)
+      JF_URL: "http://${{ secrets.SCM_MAVEN_IP }}"
+      # Basic authentication credentials
+      JF_USER: ${{ secrets.SCM_MAVEN_USER }}
+      JF_PASSWORD: ${{ secrets.SCM_MAVEN_PW }}
+      SERVER_WEBSITE_USER: ${{ secrets.SERVER_WEBSITE_USER }}
+      SERVER_WEBSITE_PASSWORD: ${{ secrets.SERVER_WEBSITE_PASSWORD }}
+      SERVER_MAVEN_REPO_USER: ${{ secrets.SERVER_MAVEN_REPO_USER }}
+      SERVER_MAVEN_REPO_PASSWORD: ${{ secrets.SERVER_MAVEN_REPO_PASSWORD }}
+      SERVER_SONATYPE_NEXUS_SNAPSHOTS_USER: ${{ secrets.SERVER_SONATYPE_NEXUS_SNAPSHOTS_USER }}
+      SERVER_SONATYPE_NEXUS_SNAPSHOTS_PASSWORD: ${{ secrets.SERVER_SONATYPE_NEXUS_SNAPSHOTS_PASSWORD }}
+      SERVER_SONATYPE_NEXUS_STAGING_USER: ${{ secrets.SERVER_SONATYPE_NEXUS_STAGING_USER }}
+      SERVER_SONATYPE_NEXUS_STAGING_PASSWORD: ${{ secrets.SERVER_SONATYPE_NEXUS_STAGING_PASSWORD }}
+      SERVER_SCM_USER: ${{ secrets.SERVER_SCM_USER }}
+      SERVER_SCM_PASSWORD: ${{ secrets.SERVER_SCM_PASSWORD }}
+      SERVER_BUILD_REPO_USER: ${{ secrets.SERVER_BUILD_REPO_USER }}
+      SERVER_BUILD_REPO_PASSWORD: ${{ secrets.SERVER_BUILD_REPO_PASSWORD }}
+      ARTIFACTORY_REPO_URL: ${{ secrets.ARTIFACTORY_REPO_URL }}
+      SERVER_SCM_ID: ${{ secrets.SERVER_SCM_ID }}
     steps:
     - uses: actions/checkout@v3    
     - uses: actions/setup-java@v3
