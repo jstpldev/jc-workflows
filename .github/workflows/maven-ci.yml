@@ -42,7 +42,15 @@ jobs:
       ARTIFACTORY_REPO_URL: ${{ secrets.ARTIFACTORY_REPO_URL }}
       SERVER_SCM_ID: ${{ secrets.SERVER_SCM_ID }}
     steps:
-    - uses: actions/checkout@v3    
+    - name: Checkout current
+      uses: actions/checkout@v3
+      
+    - name: Checkout common workflows
+      uses: actions/checkout@v3
+      with:
+        repository: $GITHUB_REPOSITORY_OWNER/jc-workflows
+        path: jc-workflows
+    
     - uses: actions/setup-java@v3
       with:
         distribution: 'zulu'
@@ -56,7 +64,7 @@ jobs:
                 
     - name: Copy settings.xml
       run: |
-        cp conf/settings.xml ~/.m2/settings.xml
+        cp jc-workflows/conf/settings.xml ~/.m2/settings.xml
       
     - name: Build with Maven
       run: |
