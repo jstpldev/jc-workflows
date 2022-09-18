@@ -48,10 +48,10 @@ jobs:
     - name: Checkout common workflows
       uses: actions/checkout@v3
       with:
-        repository: $GITHUB_REPOSITORY_OWNER/jc-workflows
-        path: jc-workflows
+        repository: jstpldev/jc-workflows
         ref: main
-    
+        path: jc-workflows
+        
     - uses: actions/setup-java@v3
       with:
         distribution: 'zulu'
