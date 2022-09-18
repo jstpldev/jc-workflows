@@ -48,12 +48,12 @@ jobs:
     - name: Extract owner
       shell: bash
       run: echo "##[set-output name=owner;]$(echo ${GITHUB_REPOSITORY#*/})"
-      id: owner
+      id: extract_owner
       
     - name: Checkout common workflows repo
       uses: actions/checkout@v3
       with:
-        repository: ${{ steps.owner.outputs.value }}/jc-workflows
+        repository: ${{ steps.extract_owner.outputs.owner }}/jc-workflows
         ref: main
         path: jc-workflows
         
