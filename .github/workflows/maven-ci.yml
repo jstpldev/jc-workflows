@@ -50,6 +50,7 @@ jobs:
       with:
         repository: $GITHUB_REPOSITORY_OWNER/jc-workflows
         path: jc-workflows
+        ref: main
     
     - uses: actions/setup-java@v3
       with:
