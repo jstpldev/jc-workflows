@@ -48,7 +48,7 @@ jobs:
     - name: Checkout common workflows
       uses: actions/checkout@v3
       with:
-        repository: ${GITHUB_REPOSITORY%/*}/jc-workflows
+        repository: ${{ env.GITHUB_REPOSITORY_OWNER }}/jc-workflows
         ref: main
         path: jc-workflows
         
