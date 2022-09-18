@@ -77,4 +77,4 @@ jobs:
        mvn clean install
        
     - name: Publish
-      run: mvn deploy -DaltSnapshotDeploymentRepository=snapshots::default::$ARTIFACTORY_REPO_URL/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::$ARTIFACTORY_REPO_URL/libs-releases
+      run: mvn deploy
