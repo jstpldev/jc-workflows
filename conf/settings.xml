@@ -54,13 +54,13 @@
         </mirror>
     </mirrors>
     <profiles>
-        <profile>
+        <!--profile>
           <id>art</id>
           <properties>
             <altSnapshotDeploymentRepository>snapshots::default::${ARTIFACTORY_REPO_URL}/libs-snapshot</altSnapshotDeploymentRepository>
             <altReleaseDeploymentRepository>releases::default::${ARTIFACTORY_REPO_URL}/libs-releases</altReleaseDeploymentRepository>
           </properties>
-        </profile>
+        </profile-->
         <profile>
             <id>jc</id>
             <activation>
@@ -113,8 +113,8 @@
                 </pluginRepository>
             </pluginRepositories>
         </profile>
-        <activeProfiles>
+        <!--activeProfiles>
             <activeProfile>art</activeProfile>
-         </activeProfiles>
+         </activeProfiles-->
     </profiles>
 </settings>
