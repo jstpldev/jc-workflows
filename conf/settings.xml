@@ -1,6 +1,11 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
     <servers>
         <server>
+            <id>central</id>
+            <username>${SERVER_MAVEN_REPO_USER}</username>
+            <password>${SERVER_MAVEN_REPO_PASSWORD}</password>
+        </server>
+        <server>
             <id>snapshots</id>
             <username>${SERVER_MAVEN_REPO_USER}</username>
             <password>${SERVER_MAVEN_REPO_PASSWORD}</password>
