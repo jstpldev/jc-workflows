@@ -68,6 +68,13 @@
                     </snapshots>
                 </repository>
                 <repository>
+                    <id>releases</id>
+                    <url>${ARTIFACTORY_REPO_URL}</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
                     <id>snapshots</id>
                     <url>${ARTIFACTORY_REPO_URL}</url>
                     <releases>
@@ -78,6 +85,13 @@
             <pluginRepositories>
                 <pluginRepository>
                     <id>central</id>
+                    <url>${ARTIFACTORY_REPO_URL}</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                 <pluginRepository>
+                    <id>releases</id>
                     <url>${ARTIFACTORY_REPO_URL}</url>
                     <snapshots>
                         <enabled>false</enabled>
