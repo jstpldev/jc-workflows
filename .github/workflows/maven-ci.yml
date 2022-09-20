@@ -77,4 +77,4 @@ jobs:
        mvn clean install
        
     - name: Publish
-      run: mvn deploy -DaltDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release -DaltSnapshotDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release
+      run: mvn deploy -DaltDeploymentRepository=releases::${JF_URL}/artifactory/libs-release -DaltSnapshotDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release
