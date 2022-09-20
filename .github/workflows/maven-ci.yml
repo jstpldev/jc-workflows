@@ -78,7 +78,7 @@ jobs:
        
     - name: Get project version env variable
       run: |
-        mvn help:help
+        # mvn help:help
         # echo "PROJECT_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version -o | grep -v '\[')" >> $GITHUB_ENV
                
     - name: Publish
