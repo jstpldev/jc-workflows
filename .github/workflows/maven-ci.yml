@@ -74,7 +74,7 @@ jobs:
         
     - name: Add hosts to /etc/hosts
       run: |
-       sudo echo "127.0.0.1 mavenrepo.jstpl.com" | sudo tee -a /etc/hosts
+       sudo echo "174.129.245.22 mavenrepo.jstpl.com" | sudo tee -a /etc/hosts
       
     - name: Build with Maven
       run: |
