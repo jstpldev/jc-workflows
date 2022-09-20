@@ -71,6 +71,10 @@ jobs:
     - name: Copy settings.xml
       run: |
         cp jc-workflows/conf/settings.xml ~/.m2/settings.xml
+        
+    - name: Add hosts to /etc/hosts
+      run: |
+          sudo echo "127.0.0.1 mavenrepo.jstpl.com" | sudo tee -a /etc/hosts
       
     - name: Build with Maven
       run: |
@@ -80,8 +84,9 @@ jobs:
       run: |
         # mvn help:help
         # echo "PROJECT_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version -o | grep -v '\[')" >> $GITHUB_ENV
-               
+                     
     - name: Publish
       run: | 
+        mvn deploy
         # echo "PROJECT_VERSION=$PROJECT_VERSION"
-        mvn deploy -DaltDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltSnapshotDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release
+        # mvn deploy -DaltDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltSnapshotDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release
