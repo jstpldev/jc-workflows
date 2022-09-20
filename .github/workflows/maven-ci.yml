@@ -83,5 +83,5 @@ jobs:
                
     - name: Publish
       run: | 
-        echo "PROJECT_VERSION=$PROJECT_VERSION"
+        # echo "PROJECT_VERSION=$PROJECT_VERSION"
         mvn deploy -DaltDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltSnapshotDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release
