@@ -75,11 +75,6 @@ jobs:
     - name: Build with Maven
       run: |
        mvn clean install
-       
-    - name: "Set publish repo"
-      run: |
-        project_verison=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-        echo "project_verison=$project_verison"
-        
+               
     - name: Publish
       run: mvn deploy -DaltSnapshotDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release
