@@ -81,6 +81,11 @@
                         <enabled>false</enabled>
                     </releases>
                 </repository>
+                <!--Configure repositories so they don't need to go in the pom file-->
+                <properties>
+                    <altSnapshotDeploymentRepository>jc::default::http://174.129.245.22/artifactory/libs-snapshot</altSnapshotDeploymentRepository>
+                    <altReleaseDeploymentRepository>jc::default::http://174.129.245.22/artifactory/libs-release</altReleaseDeploymentRepository>
+                </properties>
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
