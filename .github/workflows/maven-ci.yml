@@ -67,14 +67,7 @@ jobs:
     - name: Build with Maven
       run: |
        mvn clean install
-       
-    - name: Get project version env variable
-      run: |
-        # mvn help:help
-        echo "PROJECT_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version -o | grep -v '\[')" >> $GITHUB_ENV
-                     
+                         
     - name: Publish
       run: | 
         mvn deploy
-        # echo "PROJECT_VERSION=$PROJECT_VERSION"
-        # mvn deploy -DaltDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltSnapshotDeploymentRepository=snapshots::default::${JF_URL}/artifactory/libs-snapshot -DaltReleaseDeploymentRepository=releases::default::${JF_URL}/artifactory/libs-release
