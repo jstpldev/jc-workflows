@@ -5,13 +5,6 @@ name: Maven CI
 
 on:  
   workflow_call:
-    secrets:
-        SCM_MAVEN_IP:
-          required: true
-        SCM_MAVEN_USER:
-          required: true
-        SCM_MAVEN_PW:
-          required: true
           
 jobs:
   maven-ci:
@@ -22,11 +15,6 @@ jobs:
     name: Maven CI
     continue-on-error: false
     env:
-      # JFrog platform url (for example: https://acme.jfrog.io)
-      JF_URL: "http://${{ secrets.SCM_MAVEN_IP }}"
-      # Basic authentication credentials
-      JF_USER: ${{ secrets.SCM_MAVEN_USER }}
-      JF_PASSWORD: ${{ secrets.SCM_MAVEN_PW }}
       SERVER_WEBSITE_USER: ${{ secrets.SERVER_WEBSITE_USER }}
       SERVER_WEBSITE_PASSWORD: ${{ secrets.SERVER_WEBSITE_PASSWORD }}
       SERVER_MAVEN_REPO_USER: ${{ secrets.SERVER_MAVEN_REPO_USER }}
